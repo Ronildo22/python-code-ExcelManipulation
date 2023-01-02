@@ -38,9 +38,9 @@ planilha.save("Text.xlsx")
 
 
 
-
-
-
+# LINKS USADOS
+# https://acervolima.com/trabalho-com-planilhas-do-excel-em-python/
+# https://www.hashtagtreinamentos.com/integrar-excel-com-python
 
 
 
