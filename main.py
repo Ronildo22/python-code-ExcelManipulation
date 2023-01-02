@@ -1,64 +1,50 @@
+
 from openpyxl import Workbook, load_workbook
-from openpyxl.utils import get_column_letter
-
-
-# from pandas  as pd
-
-# Cria Novo workbook
-wb = Workbook()
-
-# Seleciona a active Sheet
-ws1 = wb.active
-
-# Rename it
-
-ws1.title = 'my test'
-
-# Escreve alguns dados
-
-for col in range(1,5):
-    for row in range(1,6):
-        letter = get_column_letter(col)
-        ws1[letter + str(row)] = letter + str(row)
 
 
 
+planilha = load_workbook("Text.xlsx")
+
+aba_ativa = planilha.active
+# I
+for celula in aba_ativa["E"]:
+     if celula.value == 35:
+        linha = celula.row
+        aba_ativa[f"E{linha}"] = " "
+
+planilha.save("Text.xlsx")
 
 
-# Cria nova sheet
 
-ws2 = wb.create_sheet(title="Ok")
-
-ws2["C1"] = "OK"
-
-# Salva arquivo (Se não colocar o caminho complete, ele salva
-# na mesma pasta do scritp.
-
-wb.save('Text.xlsx')
-
-
+#
+#
+# sheet_obj = planilha.active
+#
+# row = sheet_obj.max_row
+# column = sheet_obj.max_column
+#
+# print("Total Rows:", row)
+# print("Total Columns:", column)
+#
+# # SELECIONADO PRIMEIRA COLUNA
+# for i in range(1, row + 1):
+#     cell_obj = sheet_obj.cell(row = i, column = 1)
+#     print(cell_obj.value)
+#
+# # SELECIONANDO PRIMEIRA LINHA
+# for i in range(1, column + 1):
+#     cell_obj = sheet_obj.cell(row = 1, column = i)
+#     print(cell_obj.value, end = " | ")
 
 
 
 
-# Acesse Sheet 1
-ws = wb['Sheet1']
-# Acesse Sheet 2
-ws = wb['Sheet2']
-# Use a aba ativa quando o arquivo foi carregado
-ws = wb.active
 
 
-# Adiciona valor a uma célula
-ws['A1'] = "Any Value"
-# Adiciona fórmula a uma célula
-ws['C7'] = '=SUM(C2:C6)'
-# Adiciona linha no final da tabela (append)
-# Use uma lista onde cada valor vai para uma célula da linha
-to_append = ['A1', 2, 'C1', 4, 'end']
-#Append
-ws.append(to_append)
-#Salve
-wb.save('Test.xlsx')
+
+
+
+
+
 
 
