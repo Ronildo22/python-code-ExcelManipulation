@@ -1,6 +1,8 @@
 from openpyxl import Workbook, load_workbook
 import pandas as pd
 
+
+
 planilha = load_workbook("Text.xlsx", data_only = True)
 
 aba_ativa = planilha.active
@@ -13,14 +15,27 @@ sheet_obj = planilha.active
 row = sheet_obj.max_row
 column = sheet_obj.max_column
 
-album = {'nome':'A Night at the Opera,' ' TESTE1,' ' TESTE2',' artista':'Blind Guardian','lançamento':2002}
 
-
-# df = pd.read_excel("", sheet_name="Planilha2")
+album = {'nome':'A Night at""" the Opera,' ' TESTE1,' ' TESTE2',' artista':'Blind Guardian','lançamento':2002}
 
 
 
 
+#LOCALIZANDO QUANTOS DADOS TEM NA LINHA E EM QUAL LINHA FOI ENCONTRADO
+i=0
+index= 0
+b=0
+list= []
+
+for celula in aba_ativa["F"]:
+        i+= 1
+        if celula.value == "Gabriel":
+            sheet_obj.cell(row = i, column = 7)
+            list.append(i)
+            index +=1
+
+print(f'Quantidade de Valores Encontrados na tabela: {index}')
+print(f'O valor foi encontrado na linha: {list}')
 
 
 #Consultando a tabela toda
@@ -29,8 +44,8 @@ album = {'nome':'A Night at the Opera,' ' TESTE1,' ' TESTE2',' artista':'Blind G
 
 
 
-#SELECIONANDO UMA PLANILHA COM PANDAS
-                              # *sheet_name* Escolhe planilha dentro do arq
+# SELECIONANDO UMA PLANILHA COM PANDAS
+#                               *sheet_name* Escolhe planilha dentro do arq
 # df2 = pd.read_excel("Text.xlsx", sheet_name=1, usecols=None)
 # print(df2)
 
@@ -49,8 +64,8 @@ album = {'nome':'A Night at the Opera,' ' TESTE1,' ' TESTE2',' artista':'Blind G
 
 
 #SELECIONADO UMA LINHA COM PANDAS
-df4 = pd.read_excel("Text.xlsx", sheet_name=1,nrows=1)
-print(df4)
+# df4 = pd.read_excel("Text.xlsx", sheet_name=1,nrows=1)
+# print(df4)
 
 
 
@@ -89,6 +104,7 @@ planilha.save("Text.xlsx")
 # mean_df = df['dados'].mean()
 # print(mean_df)
 
+
 #PERCORRENDO td um dicionario
 # for key in album:
 #    print(album[key])
@@ -111,8 +127,6 @@ list = []
 #Consulta de dados simples
 teste = ws['E1'].value
 #print(teste)
-
-
 
 
 
@@ -150,9 +164,6 @@ print(f'\n')
 # print(f'\n')
 # for x in teste:
 #     print(x)
-
-
-
 
 
 
